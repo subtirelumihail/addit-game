@@ -45,13 +45,13 @@ gulp.task('imagemin', function() {
 // JS concat, strip debugging and minify
 gulp.task('scripts', function() {
   gulp.src(jsSrc)
-    //.pipe(concat('app.js'))
-   // .pipe(stripDebug())
-   // .pipe(uglify())
     .pipe(gulp.dest(jsDst));
 });
 
-
+gulp.task('vendors', function() {
+  gulp.src('./res/*.js')
+    .pipe(gulp.dest('./build/vendors/'));
+});
  
 // CSS concat, auto-prefix and minify
 gulp.task('styles', function() {
@@ -62,20 +62,6 @@ gulp.task('styles', function() {
     .pipe(gulp.dest(cssDst));
 });
 
-/*gulp.task('htmlpage', function() {
-  gulp.src(htmlSrc)
-    .pipe(changed(htmlDst))
-    .pipe(gulp.dest(htmlDst));
-});
-*/
-
-/*gulp.task('htmlpage', function () {
-  gulp.src('./build/index.html')
-  	.pipe(changed('./build/index.html'))
-    .pipe(processhtml('./build/index.html'))
-    .pipe(gulp.dest('./build'));
-});
-*/
 gulp.task('livereload', function() {
   var server = livereload();
   gulp.watch('build/**').on('change', function(file) {
@@ -94,7 +80,7 @@ gulp.task('jade', function () {
 });
 
 // default gulp task
-gulp.task('default', ['imagemin', 'scripts', 'styles','livereload','jade'], function() {
+gulp.task('default', ['imagemin', 'scripts', 'vendors', 'styles','livereload','jade'], function() {
 	  // watch for JS changes
 	  gulp.watch(jsSrc, function() {
 	    gulp.run('scripts', 'jshint');
@@ -105,15 +91,10 @@ gulp.task('default', ['imagemin', 'scripts', 'styles','livereload','jade'], func
 	    gulp.run('styles');
 	  });
 
-	  // watch for HTML changes
-	  /*gulp.watch(htmlSrc, function() {
-	    gulp.run('htmlpage');
-	  });
-*/
-    // watch for HAML changes
     gulp.watch(jadeSrc, function() {
       gulp.run('jade');
     });
+
     gulp.watch(jadeIncludes, function() {
       gulp.run('jade');
     });
