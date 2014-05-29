@@ -13,6 +13,7 @@ function Score(){
 
 Score.prototype.getBestScore = function(){
     this.bestScore = typeof(Storage)!=="undefined" ? parseInt(localStorage.getItem("bestscore")) : 0;
+    this.bestScore = this.bestScore ? this.bestScore : 0;
 }
 
 Score.prototype.setBestScore = function(){
