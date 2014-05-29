@@ -1,0 +1,4 @@
+===== Bug 1
+	If you lose the level doesn't reset --- done
+===== Bug 2
+	If you click a tile after you have already clicked 3 tiles it will create a new instance for every fast click ---- this shouldbe resolved by disabling temporary the click event on the tiles

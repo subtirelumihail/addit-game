@@ -1,0 +1,33 @@
+doctype html
+html
+	include includes/header
+body
+	#wrapper
+		#header
+			.left
+				.logo.notselectable ADDIT<span class="plus">+</span>
+				.howtoplay HOW TO PLAY?
+			.middle
+				.guessnumber.notselectable 
+					span 
+				.timer
+					.time
+						span
+					input(value='100', class='dial')
+			.right
+				.score
+				.highscore BEST: <span class="bestscore">000000</span>
+				.newgame NEW GAME?
+		#main
+			.overlayer
+			#help
+				.container
+					| To play this game you have to <b>select 3 numbers</b> and their <b>sum</b> should <b>equal</b> the middle <b>top number</b><br/><br/>To <b>deselect</b> a tile you can click it again
+					.close close
+			.inner
+				ul.game
+		#footer
+			p. This app was made with <strong>love</strong>			
+
+
+	include includes/footer
