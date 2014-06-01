@@ -133,8 +133,6 @@ var App = Backbone.View.extend({
          var sum = _.reduce(shuffle, function(memo, num){ return memo + num; }, 0); //Sum the random numbers to get the guess number
         }while(sum == game.prevNr || sum < 10)
         
-        console.log(shuffle);   //Show numbers
-        
         return game.prevNr = sum;
     }
 });
