@@ -40,7 +40,7 @@ Score.prototype.setScore = function(t, l){
 
     sLen = 8 - sLen.length;
     for(var i=0; i<sLen; i++){ kl = kl + '0'; }
-
+ 
     this.setBestScore();
     this.scoreContainer.html(kl+game.score);
 }
